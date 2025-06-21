@@ -1,0 +1,157 @@
+.map-wrapper {
+  width: 100%;
+  min-height: 2000px; /* or however tall your bg image is */
+  overflow-y: auto;
+  position: relative;
+  
+}
+
+.bg-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(3px) brightness(0.6);
+  z-index: 0;
+}
+
+.map-scroll {
+  position: relative;
+  /* ensures map content stays above the blur layer */
+}
+
+
+.map-scroll {
+  position: relative;
+  width: 100%;
+  min-height: 1600px; /* Match your total concept height */
+  z-index: 1;
+}
+
+
+.map-path {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+
+.map-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  cursor: default;
+  transition: transform 0.3s;
+  border-radius: 50%;;
+}
+
+.map-node.unlocked {
+  animation: pulse 2s infinite;
+  cursor: pointer;
+}
+
+.map-node.locked {
+  filter: grayscale(1);
+  opacity: 0.6;
+
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #111;
+  color: #0ff;
+  font-weight: bold;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #0ff;
+  box-shadow: 0 0 15px #0ff;
+  margin-bottom: 5px;
+}
+
+.label {
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+}
+
+
+
+.map-line {
+  stroke: #a19e9e;                /* ✅ This sets the visible color */
+  stroke-width: 3;
+  fill: none;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 2s forwards ease-in-out;
+}
+
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 15px #0ff; }
+  50% { box-shadow: 0 0 25px #0ff; }
+  100% { box-shadow: 0 0 15px #0ff; }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.map-node-img {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.map-node-img:hover {
+  transform: scale(1.05);
+}
+
+.map-node-img.locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.level-badge,
+.lock-icon {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 0 4px #000;
+}
+
+.label {
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  text-shadow: 0 0 3px black;
+}

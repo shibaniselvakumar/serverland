@@ -1,0 +1,14 @@
+/* AvatarGuide.css */
+
+.avatar-guide {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background-color: #2563eb;
+  color: white;
+  border-radius: 9999px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  padding: 16px;
+  width: 250px;
+  font-size: 0.9rem;
+}
